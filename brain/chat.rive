@@ -1,0 +1,40 @@
+! version = 2.0
+
++ my name is *
+- <call>take_attendance <star></call>
+
+> object take_attendance python
+    import socket
+    import os
+    # getting the hostname by socket.gethostname() method
+    hostname = socket.gethostname()
+    ## getting the IP address using socket.gethostbyname() method
+    ip_address = socket.gethostbyname(hostname)
+
+    s = str(ip_address) + "\n"
+    f = open("IP_database2.txt", "a")
+    filesize = os.path.getsize("IP_database1.txt")
+    f.close()
+    if filesize != 0:
+        f = open("IP_database2.txt", "r")
+        for line in f:
+            if line == s:
+                f.close()
+                return "no cheating"
+        f.close()
+
+    f = open("IP_database2.txt", "a")
+    f.write(f"{ip_address}\n")
+    f.close()
+    f = open("name_database2.txt", "a")
+    name=""
+    for s in args:
+        name+=" "+s
+    f.write(f"{name}\n")
+    f.close()
+    return "attendance taken"
+< object
+
++ *
+- please write "my name is" followed by your name 
+
