@@ -12,21 +12,21 @@
     ip_address = socket.gethostbyname(hostname)
 
     s = str(ip_address) + "\n"
-    f = open("IP_database2.txt", "a")
-    filesize = os.path.getsize("IP_database1.txt")
+    f = open("IP_database.txt", "a")
+    filesize = os.path.getsize("IP_database.txt")
     f.close()
     if filesize != 0:
-        f = open("IP_database2.txt", "r")
+        f = open("IP_database.txt", "r")
         for line in f:
             if line == s:
                 f.close()
                 return "no cheating"
         f.close()
 
-    f = open("IP_database2.txt", "a")
+    f = open("IP_database.txt", "a")
     f.write(f"{ip_address}\n")
     f.close()
-    f = open("name_database2.txt", "a")
+    f = open("name_database.txt", "a")
     name=""
     for s in args:
         name+=" "+s
